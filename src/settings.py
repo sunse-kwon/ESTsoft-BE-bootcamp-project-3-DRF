@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # internal apps
+    'user',
 
     # external apps
     'rest_framework',
