@@ -88,7 +88,14 @@ WSGI_APPLICATION = 'src.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+        'DEFAULT_THROTTLE_CLASS': {
+        'rest_framework.throttling.UserRateThrottle'
+    },
+    'DEFAULT_THROTTLE_RATES': {
+        # sec, min, hour, day
+        'user': '5/day',
+    },
 
 }
 

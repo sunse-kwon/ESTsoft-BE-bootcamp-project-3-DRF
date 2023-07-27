@@ -5,12 +5,14 @@ from rest_framework.response import Response
 from .utils import gpt_chat
 from .models import Conversation
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.throttling import UserRateThrottle
 
 # from .serializers import ChatSerializer
 # Create your views here.
 
 class ChatView(APIView):
     permission_classes = (IsAuthenticated,)
+    throttle_classes = [UserRateThrottle]
     
     def get(self, request, *args, **kwargs):
         conversations = request.session.get('conversations', [])
