@@ -40,6 +40,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # internal apps
     'user',
+    'chatbot',
 
     # external apps
     'rest_framework',
