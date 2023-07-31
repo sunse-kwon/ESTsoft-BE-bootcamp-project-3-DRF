@@ -30,9 +30,10 @@ APIKEY = os.getenv('OPENAI_API_KEY')
 SECRET_KEY = 'django-insecure-jh*6^l4k8ns&4^6ew#)ar$^z5c3r%n_n(e%00*jlixm6qk_*_f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.bundletripbychat.com',
+                 'www.bundletripbychat.com', '13.209.225.107', 'localhost', '127.0.0.1',]
 
 
 # Application definition
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     # external apps
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
 
     # default apps
     'django.contrib.admin',
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,6 +67,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# CORS 관련 추가
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000', 'http://localhost:3000']
+CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = 'src.urls'
 
@@ -89,7 +98,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-        'DEFAULT_THROTTLE_CLASS': {
+    'DEFAULT_THROTTLE_CLASS': {
         'rest_framework.throttling.UserRateThrottle'
     },
     'DEFAULT_THROTTLE_RATES': {
@@ -102,7 +111,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
 }
 
 # Database
