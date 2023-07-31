@@ -32,8 +32,8 @@ SECRET_KEY = 'django-insecure-jh*6^l4k8ns&4^6ew#)ar$^z5c3r%n_n(e%00*jlixm6qk_*_f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.bundletripbychat.com',
-                 'www.bundletripbychat.com', '13.209.225.107', 'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = [
+    'api.bundletripbychat.com', '13.209.225.107',]
 
 
 # Application definition
